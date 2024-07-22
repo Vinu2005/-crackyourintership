@@ -1,0 +1,23 @@
+73. Set Matrix Zeroes
+Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+You must do it in place.
+
+
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        d={'row':[],'column':[]} #creating the fixed hashmap
+        for i in range(len(matrix)): #looping through the rows indices
+            for j in range(len(matrix[0])): #looping through the columns indices
+                if matrix[i][j]==0: #updating the hashmap
+                    d['row'].append(i)
+                    d['column'].append(j)
+        for i in d["row"]: 
+            for j in range(len(matrix[0])): #row will be fixed and we will iterate through all of its elements and change it to 0
+                matrix[i][j]=0
+        for i in d["column"]:
+            for j in range(len(matrix)): #column is fixed here and we are iterating through its elements
+                matrix[j][i]=0
+        
